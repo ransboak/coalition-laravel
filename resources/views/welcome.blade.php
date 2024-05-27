@@ -42,7 +42,7 @@
                     <td><input type="text" class="form-control" value="{{ $product->product_name }}" readonly></td>
                     <td><input type="number" class="form-control" value="{{ $product->quantity_in_stock }}" readonly></td>
                     <td><input type="number" step="0.01" class="form-control" value="{{ $product->price_per_item }}" readonly></td>
-                    <td>{{ $product->created_at }}</td>
+                    <td>{{\Carbon\Carbon::parse($product->created_at)->format('jS F Y (H:i)')  }}</td>
                     <td>{{ number_format($product->quantity_in_stock * $product->price_per_item, 2) }}</td>
                     <td>
                         <button class="btn btn-sm btn-warning editBtn">Edit</button>
