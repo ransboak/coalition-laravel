@@ -9,7 +9,7 @@
 <body>
 <div class="container mt-5">
     <h1>Product Inventory</h1>
-    <form action="{{route('product.store')}}" id="productForm" class="mb-4">
+    <form  id="productForm" class="mb-4">
         @csrf
         <div class="form-group">
             <label for="productName">Product Name</label>
