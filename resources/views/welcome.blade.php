@@ -9,7 +9,8 @@
 <body>
 <div class="container mt-5">
     <h1>Product Inventory</h1>
-    <form id="productForm" class="mb-4">
+    <form action="{{route('product.store')}}" id="productForm" class="mb-4">
+        @csrf
         <div class="form-group">
             <label for="productName">Product Name</label>
             <input type="text" class="form-control" id="productName" name="product_name" required>
@@ -66,7 +67,7 @@ $(document).ready(function() {
     $('#productForm').submit(function(e) {
         e.preventDefault();
         $.ajax({
-            url: '/products',
+            url: '/coalition-laravel/public/products',
             method: 'POST',
             data: $(this).serialize(),
             success: function(data) {
@@ -92,7 +93,7 @@ $(document).ready(function() {
         const quantity = row.find('input:eq(1)').val();
         const price = row.find('input:eq(2)').val();
         $.ajax({
-            url: '/products/' + id,
+            url: '/coalition-laravel/public/products/' + id,
             method: 'PUT',
             data: {
                 _token: '{{ csrf_token() }}',

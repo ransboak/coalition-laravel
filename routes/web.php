@@ -4,7 +4,9 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,12 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $products = Product::orderBy('created_at', 'desc')->get();
+    
+    return view('welcome', compact('products'));
 });
+
+Route::post('/products', [ProductController::class, 'store'])->name('product.store');
+
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('product.update');
